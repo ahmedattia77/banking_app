@@ -1,4 +1,5 @@
 import 'package:banking_app/common_widgets/custom_appbar.dart';
+import 'package:banking_app/features/settings/views/widgets/general_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -14,6 +15,8 @@ class SettingsPage extends StatelessWidget {
         children: [
           const SizedBox(height: 20),
           CustomAppbar(),
+          GeneralText(),
+          
         ],
       ),
     );
