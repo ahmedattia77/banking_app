@@ -1,3 +1,4 @@
+import 'package:banking_app/features/settings/views/pages/settings_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -23,7 +24,7 @@ class _NavigationBarPageState extends State<NavigationBarPage> {
     const Center(child: Text("home")), 
     const Center(child: Text("may cart")),
     const Center(child: Text("statistics")),
-    const Center(child: Text("settings")),
+    const SettingsPage(),
   ];
   @override
   Widget build(BuildContext context) {
@@ -31,8 +32,7 @@ class _NavigationBarPageState extends State<NavigationBarPage> {
     return Scaffold(
       body: _navPages.elementAt(_currentPage),
       bottomNavigationBar: BottomNavigationBar(
-        
-        backgroundColor: Color(0xFF13141F),
+        // backgroundColor: Color(0xFF13141F),
         currentIndex: _currentPage,
         onTap: (index) {
           setState(() {
