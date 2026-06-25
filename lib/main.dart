@@ -12,7 +12,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData.dark().copyWith(
+      theme:  
+      ThemeData.dark().copyWith(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),
         brightness: Brightness.dark,
         scaffoldBackgroundColor: const Color(0xFF13141F),

@@ -28,11 +28,16 @@ class _NavigationBarPageState extends State<NavigationBarPage> {
   ];
   @override
   Widget build(BuildContext context) {
-    Color unselectedColor = Theme.of(context).iconTheme.color ?? Colors.black;
+    final theme = Theme.of(context);
+    final navTheme = theme.bottomNavigationBarTheme;
+
+    // الحصول على الألوان المحددة جوه الـ AppThemes تلقائياً
+    Color activeColor = navTheme.selectedItemColor ?? const Color(0xFF0066FF);
+    Color inactiveColor = navTheme.unselectedItemColor ?? const Color(0xFFFFFFFF).withOpacity(0.38);
+    // Color unselectedColor = Theme.of(context).iconTheme.color ?? Colors.black;
     return Scaffold(
       body: _navPages.elementAt(_currentPage),
       bottomNavigationBar: BottomNavigationBar(
-        // backgroundColor: Color(0xFF13141F),
         currentIndex: _currentPage,
         onTap: (index) {
           setState(() {
@@ -47,7 +52,7 @@ class _NavigationBarPageState extends State<NavigationBarPage> {
             icon: SvgPicture.asset(
               'assets/svgs/home_icon.svg',
               colorFilter: ColorFilter.mode(
-                _currentPage == 0 ? selectedColor : unselectedColor,
+                _currentPage == 0 ? activeColor : inactiveColor,
                 BlendMode.srcIn,
               ),
             ),
@@ -57,7 +62,7 @@ class _NavigationBarPageState extends State<NavigationBarPage> {
             icon: SvgPicture.asset(
               'assets/svgs/card_icon.svg',
               colorFilter: ColorFilter.mode(
-                _currentPage == 1 ? selectedColor : unselectedColor,
+                _currentPage == 1 ? activeColor : inactiveColor,
                 BlendMode.srcIn,
               ),
             ),
@@ -67,7 +72,7 @@ class _NavigationBarPageState extends State<NavigationBarPage> {
             icon: SvgPicture.asset(
               'assets/svgs/statistics.svg',
               colorFilter: ColorFilter.mode(
-                _currentPage == 2 ? selectedColor : unselectedColor,
+                _currentPage == 2 ? activeColor : inactiveColor,
                 BlendMode.srcIn,
               ),
             ),
@@ -77,7 +82,7 @@ class _NavigationBarPageState extends State<NavigationBarPage> {
             icon: SvgPicture.asset(
               'assets/svgs/settings_icon.svg',
               colorFilter: ColorFilter.mode(
-                _currentPage == 3 ? selectedColor : unselectedColor,
+                _currentPage == 3 ? activeColor : inactiveColor,
                 BlendMode.srcIn,
               ),
             ),
