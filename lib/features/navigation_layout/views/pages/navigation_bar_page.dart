@@ -12,14 +12,7 @@ class _NavigationBarPageState extends State<NavigationBarPage> {
   int _currentPage = 0;
   Color selectedColor = Color(0xFF0066FF);
   final List<Widget> _navPages = [
-    // here create your own screen
-    /*
-    lib
-      features
-        home
-          views
-            pages
-    */
+   
     const Center(child: Text("home")), 
     const Center(child: Text("may cart")),
     const Center(child: Text("statistics")),
@@ -41,7 +34,6 @@ class _NavigationBarPageState extends State<NavigationBarPage> {
         },
         type: BottomNavigationBarType.fixed,
         selectedItemColor: Colors.blueAccent,
-        // unselectedItemColor: unselectedColor,
         items: [
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
