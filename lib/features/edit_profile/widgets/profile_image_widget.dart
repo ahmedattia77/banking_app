@@ -8,7 +8,6 @@ class ProfileImageWidget extends StatelessWidget {
     return CircleAvatar(
       radius: 55,
       backgroundColor: Colors.grey[300],
-      // غير المسار ده لصورتك الفعلية
       backgroundImage: const AssetImage('assets/images/edit_profile.png'),
     );
   }
