@@ -1,3 +1,4 @@
+import 'package:banking_app/features/home/views/pages/home_page.dart';
 import 'package:banking_app/features/settings/views/pages/settings_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -21,7 +22,7 @@ class _NavigationBarPageState extends State<NavigationBarPage> {
           views
             pages
     */
-    const Center(child: Text("home")), 
+    const HomePage(), 
     const Center(child: Text("may cart")),
     const Center(child: Text("statistics")),
     const SettingsPage(),
