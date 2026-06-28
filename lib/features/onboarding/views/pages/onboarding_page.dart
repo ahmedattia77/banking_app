@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 import 'package:flutter/material.dart';
 
 class OnboardingPage extends StatelessWidget {
@@ -12,8 +5,6 @@ class OnboardingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(child: Text("on boarding page"),),
-    );
+    return Scaffold(body: Center(child: Text("on boarding page")));
   }
 }
