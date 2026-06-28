@@ -10,20 +10,24 @@ class NavigationBarPage extends StatefulWidget {
 
 class _NavigationBarPageState extends State<NavigationBarPage> {
   int _currentPage = 0;
-  Color selectedColor = Color(0xFF0066FF);
+  final Color selectedColor = const Color(0xFF0066FF);
+
   final List<Widget> _navPages = [
-    const Center(child: Text("home")),
-    const Center(child: Text("may cart")),
-    const Center(child: Text("statistics")),
-    const Center(child: Text("settings")),
+    const Center(child: Text("Home")),
+    const Center(child: Text("My Cart")),
+    const Center(child: Text("Statistics")),
+    const Center(child: Text("Settings")),
   ];
+
   @override
   Widget build(BuildContext context) {
-    Color unselectedColor = Theme.of(context).iconTheme.color ?? Colors.black;
+    final Color unselectedColor =
+        Theme.of(context).iconTheme.color ?? Colors.grey;
+
     return Scaffold(
       body: _navPages.elementAt(_currentPage),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Color(0xFF13141F),
+        backgroundColor: const Color(0xFF13141F),
         currentIndex: _currentPage,
         onTap: (index) {
           setState(() {
@@ -32,7 +36,7 @@ class _NavigationBarPageState extends State<NavigationBarPage> {
         },
         type: BottomNavigationBarType.fixed,
         selectedItemColor: Colors.blueAccent,
-        // unselectedItemColor: unselectedColor,
+        unselectedItemColor: unselectedColor,
         items: [
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
@@ -42,7 +46,7 @@ class _NavigationBarPageState extends State<NavigationBarPage> {
                 BlendMode.srcIn,
               ),
             ),
-            label: "home",
+            label: "Home",
           ),
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
@@ -62,7 +66,7 @@ class _NavigationBarPageState extends State<NavigationBarPage> {
                 BlendMode.srcIn,
               ),
             ),
-            label: "My Cards",
+            label: "Statistics",
           ),
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
