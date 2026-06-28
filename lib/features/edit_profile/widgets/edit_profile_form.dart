@@ -1,186 +1,80 @@
+import 'package:banking_app/features/edit_profile/widgets/birth_data_picker.dart';
 import 'package:flutter/material.dart';
+import 'name_text_field.dart';
+import 'email_text_field.dart';
+import 'phone_text_field.dart';
+import 'birth_data_picker.dart'; // ✅ صح: birth_date_picker مش birth_data_picker
 
 class EditProfileForm extends StatefulWidget {
-  const EditProfileForm({super.key});
+  final String? initialName;
+  final String? initialEmail;
+  final String? initialPhone;
+  final ValueChanged<String>? onNameChanged; // ✅ مهم للتحديث
+
+  const EditProfileForm({
+    super.key,
+    this.initialName = 'Tanya Myroniuk',
+    this.initialEmail = 'tanya myroniuk@gmail.com',
+    this.initialPhone = '+8801712663389',
+    this.onNameChanged,
+  });
 
   @override
   State<EditProfileForm> createState() => _EditProfileFormState();
 }
 
 class _EditProfileFormState extends State<EditProfileForm> {
-  final _nameController = TextEditingController(text: 'Tanya Myroniuk');
-  final _emailController = TextEditingController(
-    text: 'tanya myroniuk@gmail.com',
-  );
-  final _phoneController = TextEditingController(text: '+8801712663389');
+  late final TextEditingController _nameController;
+  late final TextEditingController _emailController;
+  late final TextEditingController _phoneController;
 
-  int selectedDay = 28;
-  String selectedMonth = 'September';
-  int selectedYear = 2000;
+  String _birthDate = '28 Jan 2000'; // ✅ String مش TextEditingController
 
-  final List<int> days = List.generate(31, (i) => i + 1);
-  final List<String> months = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
-  ];
-  final List<int> years = List.generate(100, (i) => 2024 - i);
-
-  Widget _buildTextField(
-    String label,
-    TextEditingController controller,
-    IconData icon, {
-    TextInputType keyboardType = TextInputType.text,
-  }) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(label, style: const TextStyle(color: Colors.grey, fontSize: 13)),
-        const SizedBox(height: 6),
-        Row(
-          children: [
-            Icon(icon, color: Colors.grey, size: 22),
-            const SizedBox(width: 12),
-            Expanded(
-              child: TextField(
-                controller: controller,
-                keyboardType: keyboardType,
-                style: const TextStyle(
-                  fontSize: 16,
-                  color: Colors.black,
-                  fontWeight: FontWeight.w500,
-                ),
-                decoration: const InputDecoration(
-                  border: InputBorder.none,
-                  isDense: true,
-                  contentPadding: EdgeInsets.zero,
-                ),
-              ),
-            ),
-          ],
-        ),
-        const Divider(height: 20),
-      ],
-    );
-  }
-
-  Widget _buildDatePicker() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Text(
-          'Birth Date',
-          style: TextStyle(color: Colors.grey, fontSize: 13),
-        ),
-        const SizedBox(height: 8),
-        Row(
-          children: [
-            // Day
-            Expanded(
-              child: DropdownButtonHideUnderline(
-                child: DropdownButton<int>(
-                  value: selectedDay,
-                  isExpanded: true,
-                  dropdownColor: Colors.white,
-                  style: const TextStyle(
-                    fontSize: 16,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w500,
-                  ),
-                  items: days
-                      .map((d) => DropdownMenuItem(value: d, child: Text('$d')))
-                      .toList(),
-                  onChanged: (v) => setState(() => selectedDay = v!),
-                ),
-              ),
-            ),
-            // Month
-            Expanded(
-              flex: 2,
-              child: DropdownButtonHideUnderline(
-                child: DropdownButton<String>(
-                  value: selectedMonth,
-                  isExpanded: true,
-                  dropdownColor: Colors.white,
-
-                  style: const TextStyle(
-                    fontSize: 16,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w500,
-                  ),
-                  items: months
-                      .map((m) => DropdownMenuItem(value: m, child: Text(m)))
-                      .toList(),
-                  onChanged: (v) => setState(() => selectedMonth = v!),
-                ),
-              ),
-            ),
-            // Year
-            Expanded(
-              child: DropdownButtonHideUnderline(
-                child: DropdownButton<int>(
-                  value: selectedYear,
-                  isExpanded: true,
-                  dropdownColor: Colors.white,
-
-                  style: const TextStyle(
-                    fontSize: 16,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w500,
-                  ),
-                  items: years
-                      .map((y) => DropdownMenuItem(value: y, child: Text('$y')))
-                      .toList(),
-                  onChanged: (v) => setState(() => selectedYear = v!),
-                ),
-              ),
-            ),
-          ],
-        ),
-        const Divider(height: 20),
-      ],
-    );
+  @override
+  void initState() {
+    super.initState();
+    // ✅ تهيئة الـ Controllers
+    _nameController = TextEditingController(text: widget.initialName);
+    _emailController = TextEditingController(text: widget.initialEmail);
+    _phoneController = TextEditingController(text: widget.initialPhone);
   }
 
   @override
   void dispose() {
+    // ✅ التخلص من الـ Controllers عشان الذاكرة
     _nameController.dispose();
     _emailController.dispose();
     _phoneController.dispose();
     super.dispose();
   }
 
+  void _onDateChanged(int day, String month, int year) {
+    setState(() {
+      _birthDate = '$day ${month.substring(0, 3)} $year';
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        _buildTextField(
-          'Full Name',
-          _nameController,
-          Icons.account_circle_outlined,
+        // ✅ Name TextField
+        NameTextField(
+          controller: _nameController,
+          onChanged: (value) {
+            widget.onNameChanged?.call(value); // ✅ تحديث الاسم في الـ Header
+          },
         ),
-        _buildTextField(
-          'Email Address',
-          _emailController,
-          Icons.mail_outline_rounded,
-          keyboardType: TextInputType.emailAddress,
-        ),
-        _buildTextField(
-          'Phone Number',
-          _phoneController,
-          Icons.phone_outlined,
-          keyboardType: TextInputType.phone,
-        ),
-        _buildDatePicker(),
+
+        // ✅ Email TextField
+        EmailTextField(controller: _emailController),
+
+        // ✅ Phone TextField
+        PhoneTextField(controller: _phoneController),
+
+        // ✅ Birth Date Picker
+        BirthDatePicker(onDateChanged: _onDateChanged),
+
         const SizedBox(height: 60),
         Text(
           'Joined 28 Jan 2021',

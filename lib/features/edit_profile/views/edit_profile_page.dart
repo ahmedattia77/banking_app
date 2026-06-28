@@ -1,58 +1,52 @@
 import 'package:flutter/material.dart';
+import '../widgets/custom_app_bar.dart';
+import '../widgets/profile_header_widget.dart';
 import '../widgets/edit_profile_form.dart';
-import '../widgets/profile_image_widget.dart';
 
-class EditProfilePage extends StatelessWidget {
+class EditProfilePage extends StatefulWidget {
   const EditProfilePage({super.key});
+
+  @override
+  State<EditProfilePage> createState() => _EditProfilePageState();
+}
+
+class _EditProfilePageState extends State<EditProfilePage> {
+  String fullName = 'Tanya Myroniuk';
+  String jobTitle = 'Senior Designer';
+
+  void _updateName(String newName) {
+    setState(() {
+      fullName = newName;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        leading: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: GestureDetector(
-            onTap: () => Navigator.pop(context),
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.grey[200],
-                shape: BoxShape.circle,
-              ),
-              child: const Icon(Icons.chevron_left, color: Colors.black),
-            ),
-          ),
-        ),
-        title: const Text(
-          'Edit Profile',
-          style: TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
-            fontSize: 18,
-          ),
-        ),
-        centerTitle: true,
-      ),
-      body: const SingleChildScrollView(
-        padding: EdgeInsets.symmetric(horizontal: 24.0),
+
+      // ✅ Custom App Bar
+      appBar: const CustomAppBar(title: 'Edit Profile'),
+
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.symmetric(horizontal: 24.0),
         child: Column(
           children: [
-            SizedBox(height: 20),
-            ProfileImageWidget(),
-            SizedBox(height: 12),
-            Text(
-              'Tanya Myroniuk',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            const SizedBox(height: 20),
+
+            // ✅ Profile Header
+            ProfileHeaderWidget(
+              fullName: fullName,
+              jobTitle: jobTitle,
+              onImageTap: () {
+                // منطق تغيير الصورة
+              },
             ),
-            SizedBox(height: 4),
-            Text(
-              'Senior Designer',
-              style: TextStyle(color: Colors.grey, fontSize: 14),
-            ),
-            SizedBox(height: 24),
-            EditProfileForm(),
+
+            const SizedBox(height: 24),
+
+            // ✅ Edit Profile Form مع الـ callback
+            EditProfileForm(initialName: fullName, onNameChanged: _updateName),
           ],
         ),
       ),

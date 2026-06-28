@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
 
 class ProfileImageWidget extends StatelessWidget {
-  const ProfileImageWidget({super.key});
+  final VoidCallback? onTap;
+  final double radius;
+
+  const ProfileImageWidget({super.key, this.onTap, this.radius = 55});
 
   @override
   Widget build(BuildContext context) {
-    return CircleAvatar(
-      radius: 55,
-      backgroundColor: Colors.grey[300],
-      // غير المسار ده لصورتك الفعلية
-      backgroundImage: const AssetImage('assets/images/edit_profile.png'),
+    return GestureDetector(
+      onTap: onTap,
+      child: CircleAvatar(
+        radius: radius,
+        backgroundColor: Colors.grey[300],
+        backgroundImage: const AssetImage('assets/images/edit_profile.png'),
+      ),
     );
   }
 }

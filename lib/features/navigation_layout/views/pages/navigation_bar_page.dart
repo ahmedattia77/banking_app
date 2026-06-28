@@ -12,15 +12,7 @@ class _NavigationBarPageState extends State<NavigationBarPage> {
   int _currentPage = 0;
   Color selectedColor = Color(0xFF0066FF);
   final List<Widget> _navPages = [
-    // here create your own screen
-    /*
-    lib
-      features
-        home
-          views
-            pages
-    */
-    const Center(child: Text("home")), 
+    const Center(child: Text("home")),
     const Center(child: Text("may cart")),
     const Center(child: Text("statistics")),
     const Center(child: Text("settings")),
@@ -31,7 +23,6 @@ class _NavigationBarPageState extends State<NavigationBarPage> {
     return Scaffold(
       body: _navPages.elementAt(_currentPage),
       bottomNavigationBar: BottomNavigationBar(
-        
         backgroundColor: Color(0xFF13141F),
         currentIndex: _currentPage,
         onTap: (index) {
