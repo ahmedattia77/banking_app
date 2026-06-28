@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'name_text_field.dart';
 import 'email_text_field.dart';
 import 'phone_text_field.dart';
-import 'birth_data_picker.dart'; // ✅ صح: birth_date_picker مش birth_data_picker
+import 'birth_data_picker.dart';
 
 class EditProfileForm extends StatefulWidget {
   final String? initialName;
   final String? initialEmail;
   final String? initialPhone;
-  final ValueChanged<String>? onNameChanged; // ✅ مهم للتحديث
+  final ValueChanged<String>? onNameChanged;
 
   const EditProfileForm({
     super.key,
@@ -28,12 +28,11 @@ class _EditProfileFormState extends State<EditProfileForm> {
   late final TextEditingController _emailController;
   late final TextEditingController _phoneController;
 
-  String _birthDate = '28 Jan 2000'; // ✅ String مش TextEditingController
+  String _birthDate = '28 Jan 2000';
 
   @override
   void initState() {
     super.initState();
-    // ✅ تهيئة الـ Controllers
     _nameController = TextEditingController(text: widget.initialName);
     _emailController = TextEditingController(text: widget.initialEmail);
     _phoneController = TextEditingController(text: widget.initialPhone);
@@ -41,7 +40,6 @@ class _EditProfileFormState extends State<EditProfileForm> {
 
   @override
   void dispose() {
-    // ✅ التخلص من الـ Controllers عشان الذاكرة
     _nameController.dispose();
     _emailController.dispose();
     _phoneController.dispose();
@@ -58,21 +56,17 @@ class _EditProfileFormState extends State<EditProfileForm> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        // ✅ Name TextField
         NameTextField(
           controller: _nameController,
           onChanged: (value) {
-            widget.onNameChanged?.call(value); // ✅ تحديث الاسم في الـ Header
+            widget.onNameChanged?.call(value);
           },
         ),
 
-        // ✅ Email TextField
         EmailTextField(controller: _emailController),
 
-        // ✅ Phone TextField
         PhoneTextField(controller: _phoneController),
 
-        // ✅ Birth Date Picker
         BirthDatePicker(onDateChanged: _onDateChanged),
 
         const SizedBox(height: 60),

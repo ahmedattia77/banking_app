@@ -17,7 +17,6 @@ class ProfileHeaderWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        // ✅ استخدام ProfileImageWidget مع إضافة onTap
         ProfileImageWidget(onTap: onImageTap, radius: 55),
         const SizedBox(height: 12),
         Text(
