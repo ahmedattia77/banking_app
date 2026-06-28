@@ -23,7 +23,9 @@ class MyApp extends StatelessWidget {
           scrolledUnderElevation: 0,
           iconTheme: IconThemeData(color: Colors.white),
           titleTextStyle: TextStyle(color: Colors.white, fontSize: 20),
+          
         ),
+        
       ),
       home: NavigationBarPage(),
     );
