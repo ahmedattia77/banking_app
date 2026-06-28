@@ -1,4 +1,5 @@
 import 'package:banking_app/features/home/views/pages/home_page.dart';
+import 'package:banking_app/features/my_card/views/pages/my_cards_page.dart';
 import 'package:banking_app/features/settings/views/pages/settings_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -22,8 +23,8 @@ class _NavigationBarPageState extends State<NavigationBarPage> {
           views
             pages
     */
-    const HomePage(), 
-    const Center(child: Text("may cart")),
+    const HomePage(),
+    const MyCardsPage(),
     const Center(child: Text("statistics")),
     const SettingsPage(),
   ];
@@ -32,13 +33,15 @@ class _NavigationBarPageState extends State<NavigationBarPage> {
     final theme = Theme.of(context);
     final navTheme = theme.bottomNavigationBarTheme;
 
-    // الحصول على الألوان المحددة جوه الـ AppThemes تلقائياً
     Color activeColor = navTheme.selectedItemColor ?? const Color(0xFF0066FF);
-    Color inactiveColor = navTheme.unselectedItemColor ?? const Color(0xFFFFFFFF).withOpacity(0.38);
-    // Color unselectedColor = Theme.of(context).iconTheme.color ?? Colors.black;
+    Color inactiveColor =
+        navTheme.unselectedItemColor ??
+        const Color(0xFFFFFFFF).withValues(alpha: 0.38);
+
     return Scaffold(
       body: _navPages.elementAt(_currentPage),
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Color(0xff27273A),
         currentIndex: _currentPage,
         onTap: (index) {
           setState(() {

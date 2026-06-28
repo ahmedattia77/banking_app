@@ -2,6 +2,7 @@ import 'package:banking_app/common_widgets/custom_appbar.dart';
 import 'package:banking_app/features/settings/views/widgets/general_text.dart';
 import 'package:banking_app/features/settings/views/widgets/list_title_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 const Map<String, String?> _settingsGeneralData = {
   'Language': "English",
@@ -22,7 +23,7 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-   bool _isSwithced = false;
+  bool _isSwithced = false;
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -32,7 +33,12 @@ class _SettingsPageState extends State<SettingsPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 20),
-            const CustomAppbar(),
+            CustomAppbar(
+              actionCallBack: () {},
+              leadingCallBack: () {},
+              title: "Settings",
+              actionSvgPath: "assets/svgs/logout_icon.svg",
+            ),
             const SizedBox(height: 30),
             const GeneralText(),
             const SizedBox(height: 10),
@@ -95,11 +101,14 @@ class _SettingsPageState extends State<SettingsPage> {
                   "Biometric",
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                 ),
-                Switch(value: _isSwithced, onChanged: (value) {
-                  setState(() {
-                    _isSwithced = !_isSwithced;
-                  });
-                }),
+                Switch(
+                  value: _isSwithced,
+                  onChanged: (value) {
+                    setState(() {
+                      _isSwithced = !_isSwithced;
+                    });
+                  },
+                ),
               ],
             ),
           ],
