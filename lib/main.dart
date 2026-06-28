@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       ThemeData.dark().copyWith(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),
         brightness: Brightness.dark,
-        scaffoldBackgroundColor: const Color(0xFF13141F),
+        scaffoldBackgroundColor: const Color(0xFF161622),
         appBarTheme: const AppBarTheme(
           backgroundColor: Color(0xFF13141F),
           elevation: 0,
