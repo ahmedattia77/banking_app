@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         brightness: Brightness.dark,
         scaffoldBackgroundColor: const Color(0xFF13141C),
+        appBarTheme: AppBarTheme(color: const Color(0xFF13141C),)
       ),
       home: const FakeSplashScreen(),
     );
