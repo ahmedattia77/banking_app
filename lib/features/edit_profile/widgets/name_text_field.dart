@@ -43,7 +43,7 @@ class NameTextField extends StatelessWidget {
                 onChanged: onChanged,
                 style: const TextStyle(
                   fontSize: 16,
-                  color: Colors.black,
+                  color: Colors.white,
                   fontWeight: FontWeight.w500,
                 ),
                 decoration: const InputDecoration(

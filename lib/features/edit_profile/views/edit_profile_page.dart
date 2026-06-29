@@ -23,29 +23,22 @@ class _EditProfilePageState extends State<EditProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-
-      // ✅ Custom App Bar
-      appBar: const CustomAppBar(title: 'Edit Profile'),
+      backgroundColor: const Color(0xFF13141F),
 
       body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(horizontal: 24.0),
+        padding: const EdgeInsets.symmetric(horizontal: 25.0),
         child: Column(
           children: [
+            const SizedBox(height: 30),
+            const CustomAppBar(title: 'Edit Profile'),
             const SizedBox(height: 20),
-
-            // ✅ Profile Header
             ProfileHeaderWidget(
               fullName: fullName,
               jobTitle: jobTitle,
               onImageTap: () {
-                // منطق تغيير الصورة
               },
             ),
-
             const SizedBox(height: 24),
-
-            // ✅ Edit Profile Form مع الـ callback
             EditProfileForm(initialName: fullName, onNameChanged: _updateName),
           ],
         ),

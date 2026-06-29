@@ -1,4 +1,5 @@
 import 'package:banking_app/common_widgets/custom_appbar.dart';
+import 'package:banking_app/features/edit_profile/views/edit_profile_page.dart';
 import 'package:banking_app/features/settings/views/widgets/general_text.dart';
 import 'package:banking_app/features/settings/views/widgets/list_title_view.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +23,7 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-   bool _isSwithced = false;
+  bool _isSwithced = false;
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -53,6 +54,12 @@ class _SettingsPageState extends State<SettingsPage> {
                       case 'Language':
                         break;
                       case 'My Profile':
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => EditProfilePage(),
+                          ),
+                        );
                         break;
                       case 'Contact Us':
                         break;
@@ -95,11 +102,14 @@ class _SettingsPageState extends State<SettingsPage> {
                   "Biometric",
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                 ),
-                Switch(value: _isSwithced, onChanged: (value) {
-                  setState(() {
-                    _isSwithced = !_isSwithced;
-                  });
-                }),
+                Switch(
+                  value: _isSwithced,
+                  onChanged: (value) {
+                    setState(() {
+                      _isSwithced = !_isSwithced;
+                    });
+                  },
+                ),
               ],
             ),
           ],

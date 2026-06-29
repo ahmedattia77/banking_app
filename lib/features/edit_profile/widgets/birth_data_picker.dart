@@ -52,7 +52,7 @@ class _BirthDatePickerState extends State<BirthDatePicker> {
                   dropdownColor: Colors.white,
                   style: const TextStyle(
                     fontSize: 16,
-                    color: Colors.black,
+                    color: Colors.white,
                     fontWeight: FontWeight.w500,
                   ),
                   items: days
@@ -81,7 +81,7 @@ class _BirthDatePickerState extends State<BirthDatePicker> {
                   dropdownColor: Colors.white,
                   style: const TextStyle(
                     fontSize: 16,
-                    color: Colors.black,
+                    color: Colors.white,
                     fontWeight: FontWeight.w500,
                   ),
                   items: months
@@ -109,7 +109,7 @@ class _BirthDatePickerState extends State<BirthDatePicker> {
                   dropdownColor: Colors.white,
                   style: const TextStyle(
                     fontSize: 16,
-                    color: Colors.black,
+                    color: Colors.white,
                     fontWeight: FontWeight.w500,
                   ),
                   items: years

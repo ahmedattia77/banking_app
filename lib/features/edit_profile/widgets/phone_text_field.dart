@@ -30,7 +30,7 @@ class PhoneTextField extends StatelessWidget {
                 keyboardType: TextInputType.phone,
                 style: const TextStyle(
                   fontSize: 16,
-                  color: Colors.black,
+                  color: Colors.white,
                   fontWeight: FontWeight.w500,
                 ),
                 decoration: const InputDecoration(

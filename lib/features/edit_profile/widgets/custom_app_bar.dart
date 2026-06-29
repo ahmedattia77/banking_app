@@ -15,7 +15,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.white,
+      backgroundColor: const Color(0xFF13141F),
       elevation: 0,
       leading: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -23,17 +23,17 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           onTap: onBackPressed ?? () => Navigator.pop(context),
           child: Container(
             decoration: BoxDecoration(
-              color: Colors.grey[200],
+              color: const Color.fromARGB(255, 24, 25, 38),
               shape: BoxShape.circle,
             ),
-            child: const Icon(Icons.chevron_left, color: Colors.black),
+            child: const Icon(Icons.chevron_left, color: Colors.white),
           ),
         ),
       ),
       title: Text(
         title,
         style: const TextStyle(
-          color: Colors.black,
+          color: Colors.white,
           fontWeight: FontWeight.bold,
           fontSize: 18,
         ),
