@@ -1,17 +1,46 @@
-# banking_app
+# BankPick Mobile Application 📱
 
-A new Flutter project.
+A modern, secure, and fast banking and digital wallet application built with Flutter using Clean Architecture principles and production-ready folder structuring.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+https://github.com/user-attachments/assets/39176639-8919-458c-8fce-6149849644da
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+## 🏗️ Project Architecture & Folder Structure
+
+The project strictly follows **Clean Architecture** principles combined with **Feature-first structuring**. Each feature is completely isolated, containing its own Data, Domain (if applicable), and Presentation layers.
+
+Here is an explanatory breakdown of our `lib/` directory structure based on the current implementation:
+
+```text
+lib/
+│
+├── features/                          # All app features grouped by module
+│   ├── onboarding/                    # Onboarding & Splash module
+│   │   └── views/pages/               # Onboarding Screens & FakeSplashScreen
+│   │
+│   ├── home/                          # Home dashboard module
+│   │   ├── data/                      # Data layer (Models, Repositories implementations)
+│   │   │   ├── model/
+│   │   │   └── rebository/
+│   │   │   └── usecase/
+│   │   └── views/                     # Presentation layer for Home
+│   │       ├── pages/                 # e.g., home_page.dart
+│   │       └── widgest/               # e.g., home_icon_contianer.dart, home_appbar.dart
+│   │
+│   ├── edit_profile/                  # Profile Management module
+│   │   └── views/                     # Presentation (pages & custom widgets)
+│   │
+│   ├── settings/                      # Settings & Configurations module
+│   │   └── views/pages/               # e.g., settings_page.dart
+│   │
+│   ├── request_money/                 # Money Request & Transaction module
+│   │   └── views/widgets/             # Feature-specific components
+│   │
+│   └── navigation_layout/             # Core app Shell (Persistent Navigation Bar)
+│       └── views/pages/               # navigation_bar_page.dart
+│
+└── main.dart                          # App Entry point & Theme configuration
