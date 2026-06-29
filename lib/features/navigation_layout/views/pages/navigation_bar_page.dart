@@ -31,10 +31,12 @@ class _NavigationBarPageState extends State<NavigationBarPage> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final navTheme = theme.bottomNavigationBarTheme;
+
     Color activeColor = navTheme.selectedItemColor ?? const Color(0xFF0066FF);
     Color inactiveColor = navTheme.unselectedItemColor ?? const Color(0xFFFFFFFF).withOpacity(0.38);
     // Color unselectedColor = Theme.of(context).iconTheme.color ?? Colors.black;
     return Scaffold(
+
       body: _navPages.elementAt(_currentPage),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentPage,
