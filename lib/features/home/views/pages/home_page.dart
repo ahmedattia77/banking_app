@@ -84,6 +84,7 @@ class _HomePageState extends State<HomePage> {
                     return CustomTransItemView(item: item);
                   },
                 ),
+                const SizedBox(height: 30,),
               ],
             ),
           ),
