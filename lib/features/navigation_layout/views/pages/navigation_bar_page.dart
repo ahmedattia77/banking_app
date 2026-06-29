@@ -40,6 +40,7 @@ class _NavigationBarPageState extends State<NavigationBarPage> {
         const Color(0xFFFFFFFF).withValues(alpha: 0.38);
 
     return Scaffold(
+
       body: _navPages.elementAt(_currentPage),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Color(0xff27273A),

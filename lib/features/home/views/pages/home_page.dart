@@ -34,9 +34,8 @@ class _HomePageState extends State<HomePage> {
           Positioned(
             right: 0,
             top: MediaQuery.heightOf(context) * 0.40,
-            child: Image.asset("assets/images/ston_background.png"),
-          ),
-
+            child: Image.asset("assets/images/ston_background.png" )),
+            
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 25),
             child: Column(
@@ -66,12 +65,7 @@ class _HomePageState extends State<HomePage> {
                       title: 'Loan',
                     ),
                     HomeIconContianer(
-                      onClick: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => RequestMoneyScreen(),
-                        ),
-                      ),
+                      onClick: () => Navigator.push(context, MaterialPageRoute(builder: (context) => RequestMoneyScreen(),)),
                       icon: Icon(Icons.cloud_upload_outlined),
                       title: 'Topup',
                     ),
