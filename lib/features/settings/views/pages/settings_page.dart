@@ -1,4 +1,5 @@
 import 'package:banking_app/common_widgets/custom_appbar.dart';
+import 'package:banking_app/features/edit_profile/views/edit_profile_page.dart';
 import 'package:banking_app/features/settings/views/widgets/general_text.dart';
 import 'package:banking_app/features/settings/views/widgets/list_title_view.dart';
 import 'package:flutter/material.dart';
@@ -59,6 +60,12 @@ class _SettingsPageState extends State<SettingsPage> {
                       case 'Language':
                         break;
                       case 'My Profile':
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => EditProfilePage(),
+                          ),
+                        );
                         break;
                       case 'Contact Us':
                         break;
