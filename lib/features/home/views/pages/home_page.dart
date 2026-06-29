@@ -5,7 +5,7 @@ import 'package:banking_app/features/home/data/rebository/transaction_repo.dart'
 import 'package:banking_app/features/home/views/widgest/home_appbar.dart';
 import 'package:banking_app/features/home/views/widgest/home_icon_contianer.dart';
 import 'package:banking_app/features/home/views/widgest/see_all_view.dart';
-import 'package:banking_app/features/onboarding/views/pages/request_money_screen.dart';
+import 'package:banking_app/features/request_money/views/pages/request_money_screen.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
