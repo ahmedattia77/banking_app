@@ -1,3 +1,7 @@
+import 'package:banking_app/common_widgets/colors.dart';
+import 'package:banking_app/features/home/views/widgets/buildAmountCard_widget.dart';
+import 'package:banking_app/features/home/views/widgets/date_picker_widget.dart';
+import 'package:banking_app/features/home/views/widgets/inputFiled_widget.dart';
 import 'package:flutter/material.dart';
 
 class RequestMoneyScreen extends StatefulWidget {
@@ -26,13 +30,6 @@ class _RequestMoneyScreenState extends State<RequestMoneyScreen> {
   int selectedYear = 2000;
   String currency = 'USD';
 
-  static const Color bgColor = Color(0xFF0E0E16);
-  static const Color cardColor = Color(0xFF1A1A24);
-  static const Color borderColor = Color(0xFF2A2A38);
-  static const Color labelColor = Color(0xFF8B8B9A);
-  static const Color blueAccent = Color(0xFF3461FD);
-  static const Color redAccent = Color(0xFFE5544D);
-
   @override
   void dispose() {
     _payerNameController.dispose();
@@ -45,9 +42,9 @@ class _RequestMoneyScreenState extends State<RequestMoneyScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: bgColor,
+      backgroundColor: AppColors.bgColor,
       appBar: AppBar(
-        backgroundColor: bgColor,
+        backgroundColor: AppColors.bgColor,
         elevation: 0,
         leading: IconButton(
           icon: const Icon(
@@ -73,19 +70,19 @@ class _RequestMoneyScreenState extends State<RequestMoneyScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _buildInputField(
+              LabeledInputField(
                 label: 'Payer Name',
                 controller: _payerNameController,
                 icon: Icons.person_outline,
               ),
               const SizedBox(height: 20),
-              _buildInputField(
+              LabeledInputField(
                 label: 'Email Address',
                 controller: _emailController,
                 icon: Icons.mail_outline,
               ),
               const SizedBox(height: 20),
-              _buildInputField(
+              LabeledInputField(
                 label: 'Description',
                 controller: _descriptionController,
                 icon: Icons.person_outline,
@@ -93,12 +90,23 @@ class _RequestMoneyScreenState extends State<RequestMoneyScreen> {
               const SizedBox(height: 20),
               const Text(
                 'Monthly Due By',
-                style: TextStyle(color: labelColor, fontSize: 13),
+                style: TextStyle(color: AppColors.labelColor, fontSize: 13),
               ),
               const SizedBox(height: 8),
-              _buildDateRow(),
+              DatePickerRow(
+                day: selectedDay,
+                month: selectedMonth,
+                year: selectedYear,
+                onDayTap: () {},
+                onMonthTap: () {},
+                onYearTap: () {},
+              ),
               const SizedBox(height: 28),
-              _buildAmountCard(),
+              AmountCard(
+                amountController: _amountController,
+                currency: currency,
+                onChangeCurrency: () {},
+              ),
               const SizedBox(height: 40),
               SizedBox(
                 width: double.infinity,
@@ -106,7 +114,7 @@ class _RequestMoneyScreenState extends State<RequestMoneyScreen> {
                 child: ElevatedButton(
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: blueAccent,
+                    backgroundColor: AppColors.blueAccent,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
@@ -125,133 +133,6 @@ class _RequestMoneyScreenState extends State<RequestMoneyScreen> {
             ],
           ),
         ),
-      ),
-    );
-  }
-
-  Widget _buildInputField({
-    required String label,
-    required TextEditingController controller,
-    required IconData icon,
-  }) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(label, style: const TextStyle(color: labelColor, fontSize: 13)),
-        const SizedBox(height: 8),
-        Row(
-          children: [
-            Icon(icon, color: labelColor, size: 18),
-            const SizedBox(width: 8),
-            Expanded(
-              child: TextField(
-                controller: controller,
-                style: const TextStyle(color: Colors.white, fontSize: 15),
-                decoration: const InputDecoration(
-                  isDense: true,
-                  border: InputBorder.none,
-                  contentPadding: EdgeInsets.zero,
-                ),
-              ),
-            ),
-          ],
-        ),
-        const SizedBox(height: 8),
-        Container(height: 1, color: borderColor),
-      ],
-    );
-  }
-
-  Widget _buildDateRow() {
-    return Row(
-      children: [
-        Expanded(
-          child: _buildDatePickerBox(selectedDay.toString().padLeft(2, '0')),
-        ),
-        const SizedBox(width: 12),
-        Expanded(
-          child: _buildDatePickerBox(selectedMonth.toString().padLeft(2, '0')),
-        ),
-        const SizedBox(width: 12),
-        Expanded(child: _buildDatePickerBox(selectedYear.toString())),
-      ],
-    );
-  }
-
-  Widget _buildDatePickerBox(String value) {
-    return GestureDetector(
-      onTap: () {},
-      child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 14),
-        alignment: Alignment.center,
-        decoration: const BoxDecoration(
-          border: Border(bottom: BorderSide(color: borderColor)),
-        ),
-        child: Text(
-          value,
-          style: const TextStyle(color: Colors.white, fontSize: 15),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildAmountCard() {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: cardColor,
-        borderRadius: BorderRadius.circular(14),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Text(
-                'Enter Your Amount',
-                style: TextStyle(color: labelColor, fontSize: 13),
-              ),
-              GestureDetector(
-                onTap: () {},
-                child: const Text(
-                  'Change Currency?',
-                  style: TextStyle(color: redAccent, fontSize: 13),
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 10),
-          Row(
-            children: [
-              Text(
-                currency,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-              const SizedBox(width: 12),
-              Expanded(
-                child: TextField(
-                  controller: _amountController,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 22,
-                    fontWeight: FontWeight.w600,
-                  ),
-                  keyboardType: TextInputType.number,
-                  decoration: const InputDecoration(
-                    isDense: true,
-                    border: InputBorder.none,
-                    contentPadding: EdgeInsets.zero,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ],
       ),
     );
   }
