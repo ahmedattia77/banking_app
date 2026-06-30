@@ -1,3 +1,8 @@
+
+<img width="716" height="1600" alt="9be137ca-8118-4cf5-be07-cee560b40aa7" src="https://github.com/user-attachments/assets/70447c4f-a669-4816-8750-6aafc35f59ee" />
+<img width="1080" height="2412" alt="0440c6d3-4336-47df-a13f-bfc237147c47" src="https://github.com/user-attachments/assets/fad1e2a3-fb8c-4bfa-b194-53f7cfb21447" />
+
+
 # banking_app
 
 A new Flutter project.
