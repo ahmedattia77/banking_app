@@ -1,7 +1,5 @@
-import 'package:banking_app/features/edit_profile/views/edit_profile_page.dart';
-import 'package:banking_app/features/navigation_layout/views/pages/navigation_bar_page_.dart';
-import 'package:banking_app/features/search/views/search_screen.dart';
 import 'package:flutter/material.dart';
+import 'features/Transaction_History_screen/views/transaction_history_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,13 +11,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'Banking App',
+      theme: ThemeData(primarySwatch: Colors.blue, useMaterial3: true),
+      home: const TransactionHistoryScreen(),
       debugShowCheckedModeBanner: false,
-      theme: ThemeData.dark().copyWith(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),
-        brightness: Brightness.dark,
-        scaffoldBackgroundColor: const Color(0xFF0F1F17),
-      ),
-      home: const SearchScreen(),
     );
   }
 }
