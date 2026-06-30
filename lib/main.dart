@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'features/Transaction_History_screen/views/transaction_history_screen.dart';
+
+import 'features/credit_card/views/add_new_card_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,9 +13,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Banking App',
-      theme: ThemeData(primarySwatch: Colors.blue, useMaterial3: true),
-      home: const TransactionHistoryScreen(),
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        useMaterial3: true,
+        scaffoldBackgroundColor: Colors.white,
+        fontFamily: 'SF Pro',
+      ),
+      home: const AddNewCardScreen(),
     );
   }
 }
