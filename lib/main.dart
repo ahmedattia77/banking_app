@@ -1,5 +1,6 @@
 import 'package:banking_app/features/edit_profile/views/edit_profile_page.dart';
 import 'package:banking_app/features/navigation_layout/views/pages/navigation_bar_page_.dart';
+import 'package:banking_app/features/search/views/search_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.dark,
         scaffoldBackgroundColor: const Color(0xFF0F1F17),
       ),
-      home: const NavigationBarPage(),
+      home: const SearchScreen(),
     );
   }
 }
